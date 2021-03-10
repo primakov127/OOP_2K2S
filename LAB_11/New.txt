@@ -1,0 +1,18 @@
+
+USE CsLab;
+CREATE TABLE [dbo].[Discipline] (
+    [Id]             INT          IDENTITY (1, 1) NOT NULL,
+    [DisciplineName] VARCHAR (40) NOT NULL,
+    [Course]         INT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+
+USE CsLab;
+CREATE TABLE [dbo].[Literature] (
+    [Id]             INT             IDENTITY (1, 1) NOT NULL,
+    [LiteratureName] VARCHAR (40)    NOT NULL,
+    [Picture]        VARBINARY (MAX) NULL,
+    [DisciplineId]   INT             NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    CONSTRAINT [FK_Literature_ToDiscipline] FOREIGN KEY ([DisciplineId]) REFERENCES [dbo].[Discipline] ([Id])
+);
